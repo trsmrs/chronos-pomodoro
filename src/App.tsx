@@ -6,6 +6,7 @@ import { DefaultButton } from "./components/DefaultButton";
 import { DefaultInput } from "./components/DefaultInput";
 import { Logo } from "./components/Logo";
 import { Menu } from "./components/Menu";
+import { Footer } from "./components/Footer";
 
 
 export function App() {
@@ -43,10 +44,14 @@ export function App() {
           </div>
 
           <div className="formRow">
-            <DefaultButton icon={<PlayCircleIcon />} color={"orangeRed"}/>
-            <DefaultButton icon={<StopCircleIcon />} color={"red"}/>
+            <DefaultButton icon={<PlayCircleIcon />} color={"orangeRed"} />
+            {/* <DefaultButton icon={<StopCircleIcon />} color={"red"}/> */}
           </div>
         </form>
+      </Container>
+
+      <Container>
+        <Footer />
       </Container>
 
     </>
