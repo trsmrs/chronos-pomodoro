@@ -1,0 +1,28 @@
+.menu {
+    margin: 3.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+}
+
+.menuLink {
+    display: inline-flex;
+    background-color: orangered;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    scale: 1.1;
+    transition: all 0.1s ease-in-out;
+}
+
+.menuLink:hover{
+    scale: 1.2;
+}
+
+.menuLink:visited {
+    color: #fff;
+}

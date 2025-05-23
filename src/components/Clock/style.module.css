@@ -1,9 +1,12 @@
-
 button {
     border: none;
     border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* <- Esse é o mais importante para iOS */
 }
 
 button:hover {
@@ -11,5 +14,13 @@ button:hover {
 }
 
 button:active {
-   scale: 1;
+    scale: 1;
+}
+
+button:focus {
+    outline: none;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
 }
