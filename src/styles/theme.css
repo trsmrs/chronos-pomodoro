@@ -10,16 +10,16 @@
     --gray-900: #0a0f1a;
 
     --primary-light: #4de7b7;
-    --primary: #0da170;
-    --primary-dark: #065f46;
+    --primary: #ff4500;
+    --primary-dark: #c03907;
 
     --link-color: #10b981;
     --link-hover: #0b8a60;
 
     --success: #22c55e;
     --warning: #eab308;
-    --error: #991b1b;
-    --info: #0ea5e9;
+    --error: #8f0505;
+    --info: #3f79f7;
 
     --text-over-primary: #0a0f1a;
     --text-over-primary-dark: #e6e9f0;
