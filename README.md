@@ -12,7 +12,7 @@
   <strong>Projeto desenvolvido com base no curso do professor Otávio Miranda</strong>
   <a href="https://www.udemy.com/course/curso-de-reactjs-nextjs-completo-do-basico-ao-avancado/?couponCode=KEEPLEARNINGBR" target="_blank">
   <span>Clique aqui ou na imagem ao lado para ir ao curso.</span>
-    <img src="/public/logo_otavio.png" alt="Curso Udemy" width="40"/>
+    <img src="/public/logo_otavio.png" alt="Curso Udemy" width="25"/>
   </a>
 </p>
 
