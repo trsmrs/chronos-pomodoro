@@ -2,23 +2,25 @@ import { PlayCircleIcon, StopCircleIcon } from "lucide-react";
 import { Cycles } from "../Cycles";
 import { DefaultButton } from "../DefaultButton";
 import { DefaultInput } from "../DefaultInput";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import type { TaskModel } from "../../models/TaskModel";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
-import { formatSecondsMinuts } from "../../utils/formatSecondsMinuts";
+import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
+import { Tips } from "../Tips";
+
 
 
 
 export function MainForm() {
-    const { state, setState } = useTaskContext()
+    const { state, dispatch } = useTaskContext()
 
     const taskNameInput = useRef<HTMLInputElement>(null)
 
-    // Ciclos
-    const nextCycle = getNextCycle(state.currentCycle)
-    const nextCycleType = getNextCycleType(nextCycle)
+    // Ciclos  
+    const nextCycle = getNextCycle(state.currentCycle);
+    const nextCycleType = getNextCycleType(nextCycle);
 
     function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -42,36 +44,11 @@ export function MainForm() {
             type: nextCycleType,
         };
 
-        const secondsRemaining = newTask.duration * 60;
-
-        setState(prevState => {
-            return {
-                ...prevState,
-                config: { ...prevState.config },
-                activedTask: newTask,
-                currentCycle: nextCycle,
-                secondsRemaining: secondsRemaining,
-                formattedSecondsRemaining: formatSecondsMinuts(secondsRemaining),
-                tasks: [...prevState.tasks, newTask],
-            }
-        });
+        dispatch({ type: TaskActionTypes.START_TASK, payload: newTask })
     }
 
     function handleTaskInterruption() {
-        setState(prevState => {
-            return {
-                ...prevState,
-                activedTask: null,
-                secondsRemaining: 0,
-                formattedSecondsRemaining: '00:00',
-                tasks: prevState.tasks.map(task => {
-                    if ( prevState.activedTask && prevState.activedTask.id === task.id) {
-                        return {...task, interruptDate: Date.now()};
-                    }
-                    return task;
-                })
-            }
-        });
+        dispatch({ type: TaskActionTypes.INTERRUPT_TASK })
     }
 
     return (
@@ -88,7 +65,7 @@ export function MainForm() {
             </div>
 
             <div className="formRow">
-                <p>Próximo intervalo é de 25 min.</p>
+                <Tips nextCycleType={nextCycleType} />
             </div>
 
             {state.currentCycle > 0 && (
@@ -122,8 +99,6 @@ export function MainForm() {
                     />
                 )
                 }
-
-                {/* <DefaultButton icon={<StopCircleIcon />} color={"red"}/> */}
             </div>
         </form>
     )

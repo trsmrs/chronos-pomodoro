@@ -6,6 +6,6 @@ export function CountDown() {
    const { state } = useTaskContext()
   
    return (
-      <div className={styles.container}>{state.formattedSecondsRemaining}</div>
+      <h1 className={styles.container}>{state.formattedSecondsRemaining}</h1>
    )
 }
