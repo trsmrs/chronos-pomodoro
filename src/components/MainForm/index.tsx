@@ -11,8 +11,6 @@ import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 import { Tips } from "../Tips";
 
 
-
-
 export function MainForm() {
     const { state, dispatch } = useTaskContext()
 
@@ -45,6 +43,7 @@ export function MainForm() {
         };
 
         dispatch({ type: TaskActionTypes.START_TASK, payload: newTask })
+ 
     }
 
     function handleTaskInterruption() {
