@@ -14,8 +14,8 @@ import { toastAdapter } from "../../adapters/toastAdapter";
 
 export function MainForm() {
     const { state, dispatch } = useTaskContext()
-
     const taskNameInput = useRef<HTMLInputElement>(null)
+    const lastTaskName = state.tasks[state.tasks.length - 1]?.name || '';
 
     // Ciclos  
     const nextCycle = getNextCycle(state.currentCycle);
@@ -30,7 +30,7 @@ export function MainForm() {
         const taskName = taskNameInput.current.value.trim();
 
         if (!taskName) {
-           toastAdapter.error('Insira uma tarefa válida')
+            toastAdapter.error('Insira uma tarefa válida')
             return
         }
 
@@ -45,7 +45,7 @@ export function MainForm() {
         };
 
         dispatch({ type: TaskActionTypes.START_TASK, payload: newTask })
- 
+
         toastAdapter.success('Tarefa criada com sucesso!')
     }
 
@@ -65,6 +65,7 @@ export function MainForm() {
                     placeholder="Digite uma tarefa"
                     ref={taskNameInput}
                     disabled={!!state.activedTask}
+                    defaultValue={lastTaskName}
                 />
             </div>
 
