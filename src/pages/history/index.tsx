@@ -19,6 +19,11 @@ export function History() {
     const [confirmClearHistory, setConfirmClearHistory] = useState(false)
 
 
+    useEffect(()=>{
+         document.title = 'Histórico'   
+    },[])
+
+
 
     useEffect(() => {
         return () => {
