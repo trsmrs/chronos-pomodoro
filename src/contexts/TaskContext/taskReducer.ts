@@ -52,7 +52,6 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel): Tas
                 })
             };
         }
-
         case TaskActionTypes.RESET_STATE: {
             return { ...initialTaskState };
         }
@@ -62,6 +61,9 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel): Tas
                 secondsRemaining: action.payload.secondsRemaining,
                 formattedSecondsRemaining: formatSecondsMinuts(action.payload.secondsRemaining)
             };
+        }
+        case TaskActionTypes.CHANGE_SETTINGS: {
+            return { ...state, config: { ...action.payload } };
         }
     }
 
